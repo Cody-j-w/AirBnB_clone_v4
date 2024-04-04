@@ -13,6 +13,13 @@ $(document).ready(function() {
   })
 
   $.get('http://0.0.0.0:5001/api/v1/status/', function(data, status) {
-    console.log(status);
+    if (status === 'success') {
+      $('div#api_status').addClass('available');
+      console.log('api is available');
+    }
+    else {
+      $('div#api_status').removeClass('available');
+      console.log('api is unavailable');
+    }
   }) 
 }) 
