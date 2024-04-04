@@ -7,13 +7,9 @@ $(document).ready(function() {
       checkedCheckboxes.push($(this).attr('data-name'));
     })
     let resultString = "";
-    resultString = " ".concat(...checkedCheckboxes);
-    // for (string in Object.values(checkedCheckboxes)) {
-    //   console.log(typeof string === "string")
-    //   console.log(string);
-    //   resultString = [resultString, string].join(' ');
-    // }
+    resultString = checkedCheckboxes.join(', ');
     console.log(resultString);
+    $('#amenity_list').text(resultString);
     
   })
   
