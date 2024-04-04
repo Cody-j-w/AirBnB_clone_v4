@@ -11,4 +11,8 @@ $(document).ready(function() {
     console.log(resultString);
     $('#amenity_list').text(resultString);
   })
+
+  $.get('http://0.0.0.0:5001/api/v1/status/', function(data, status) {
+    console.log(status);
+  }) 
 }) 
