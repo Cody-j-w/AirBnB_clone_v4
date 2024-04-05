@@ -22,6 +22,6 @@ $(document).ready(function() {
       $('div#api_status').removeClass('available');
       console.log('api is unavailable');
     })
-  }, 1000) 
+  }, 30000) 
 
 }) 
