@@ -96,6 +96,10 @@
     width: 100px;
 }
 
+.list_data {
+    margin-left: 10px;
+}
+
 .user {
   margin-bottom: 1.5%;
 }
