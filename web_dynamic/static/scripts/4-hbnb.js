@@ -96,12 +96,13 @@ $(document).ready(function() {
       $('.places').append($newArticle);
       
     }}
-  ajaxCall().then(function(data){
-    javascriptLoop(data);
-  });
+    ajaxCall().then(function(data){
+      javascriptLoop(data);
+    });
+
   
-  
-  $(':input').click(function() {
+ 
+  $(':input[type="checkbox"]').on("click", function() {
     amenity_dict =  $(':input[type="checkbox"]:checked');
     let checkedCheckboxes = [];
     amenity_dict.each(function() {
@@ -109,18 +110,28 @@ $(document).ready(function() {
     })
     resultString = checkedCheckboxes.join(', ');
     console.log(resultString);
+    console.log("input click function has run")
     $('#amenity_list').text(resultString);
-    ajaxCall().then(function(data){
-      let searchResult = [];
-      for (item in data) {
-        if (item in checkedCheckboxes) {
-          searchResult.push(item);
-        }
-      }
-      javascriptLoop(searchResult);
-      console.log(searchResult);
     });
-    
+
+    $(':input[type="button"]').on("click", function() {
+      ajaxCall().then(function(data){
+        let temp = [];
+        let searchResult = [];
+        amenity_dict =  $(':input[type="checkbox"]:checked');
+        let checkedCheckboxes = [];
+        amenity_dict.each(function() {
+          checkedCheckboxes.push($(this).attr('data-name'));
+        })
+        for (item in data) {
+          if (item in checkedCheckboxes) {
+            temp.push(item);
+          }
+        }
+        console.log("ajax call has run")
+        javascriptLoop(temp);
+    })
   })
+
   
 })
