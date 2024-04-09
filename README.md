@@ -14,6 +14,7 @@ The console is the first segment of the AirBnB project at Holberton School that 
 * [File Descriptions](#file-descriptions)
 * [Usage](#usage)
 * [Examples of use](#examples-of-use)
+* [API endpoints](#api-endpoints)
 * [Bugs](#bugs)
 * [Authors](#authors)
 * [License](#license)
@@ -149,6 +150,51 @@ EOF  all  create  destroy  help  quit  show  update
 ** no instance found **
 (hbnb) quit
 ```
+
+## API Endpoints
+
+#### Amenities
+* `GET /api/v1/amenities` - fetches a JSON of all amenities
+* `GET /api/v1/amenities/:amenity_id` - fetches a JSON for the amenity that has the id in the URL
+* `POST /api/v1/amenities` - creates a new amenity object from the data provided in the request body
+* `DELETE /api/v1/amenities/:amenity_id` - delete the amenity that has the id in the URL
+* `PUT /api/v1/amenities/:amenity_id` - update the amenity that has the id in the URL with the data provided in the request body
+
+#### Cities
+* `GET /api/v1/states/:state_id/cities` - fetches a JSON of all cities in the specified state
+* `GET /api/v1/cities/:city_id` - fetches a JSON for the city that has the id in the URL
+* `POST /api/v1/states/:state_id/cities` - creates a new city object from the data provided in the request body
+* `DELETE /api/v1/cities/:city_id` - delete the city that has the id in the URL
+* `PUT /api/v1/cities/:city_id` - update the city that has the id in the URL with the data provided in the request body
+
+#### Places
+* `GET /api/v1/cities/city_id/places` - fetches a JSON of all places in the specified city
+* `GET /api/v1/places/:place_id` - fetches a JSON for the place that has the id in the URL
+* `POST /api/v1/cities/city_id/places` - creates a new place object from the data provided in the request body
+* `DELETE /api/v1/places/:place_id` - delete the place that has the id in the URL
+* `PUT /api/v1/places:place_id` - update the place that has the id in the URL with the data provided in the request body
+
+#### Place Reviews
+* `GET /api/v1/places/place_id/reviews` - fetches a JSON of all reviews for the specified place
+* `GET /api/v1/reviews/:review_id` - fetches a JSON for the review that has the id in the URL
+* `POST /api/v1/places/place_id/reviews` - creates a new review object from the data provided in the request body
+* `POST /api/v1/places_search` - fetches a list of places based on data provided in the request body
+* `DELETE /api/v1/reviews/:review_id` - delete the review that has the id in the URL
+* `PUT /api/v1/reviews:review_id` - update the review that has the id in the URL with the data provided in the request body
+
+#### States
+* `GET /api/v1/states` - fetches a JSON of all states
+* `GET /api/v1/states/:state_id` - fetches a JSON for the state that has the id in the URL
+* `POST /api/v1/states` - creates a new state object from the data provided in the request body
+* `DELETE /api/v1/states/:state_id` - delete the state that has the id in the URL
+* `PUT /api/v1/states/:state_id` - update the state that has the id in the URL with the data provided in the request body
+
+#### Users
+* `GET /api/v1/users` - fetches a JSON of all users
+* `GET /api/v1/users/:user_id` - fetches a JSON for the user that has the id in the URL
+* `POST /api/v1/users` - creates a new user object from the data provided in the request body
+* `DELETE /api/v1/users/:user_id` - delete the user that has the id in the URL
+* `PUT /api/v1/users/:user_id` - update the user that has the id in the URL with the data provided in the request body
 
 ## Bugs
 No known bugs at this time. 
