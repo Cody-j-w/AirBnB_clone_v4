@@ -11,11 +11,11 @@ $(document).ready(function() {
       console.log('api is unavailable');
     })
   }, 30000);
-  function ajaxCall() {
+  function ajaxCall(data={}) {
     return $.ajax({
       type: 'POST',
       url: "http://0.0.0.0:5001/api/v1/places_search",
-      data: JSON.stringify({}),
+      data: JSON.stringify(data),
       contentType: "application/json",
       success: function(response) {
         let allPlaces = [];
@@ -31,6 +31,7 @@ $(document).ready(function() {
     for (key in allPlaces) {
       let place = allPlaces[key]
       let $newArticle = document.createElement("article");
+      $newArticle.classList.add("place_article");
       //creating title_box and place name
       let $title_box = document.createElement("div");
       $title_box.classList.add("title_box");
@@ -114,22 +115,23 @@ $(document).ready(function() {
     $('#amenity_list').text(resultString);
     });
 
-    $(':input[type="button"]').on("click", function() {
+    $('#search').on("click", function() {
+      console.log("search button clicked");
       ajaxCall().then(function(data){
-        let temp = [];
-        let searchResult = [];
+        let temp = {};
         amenity_dict =  $(':input[type="checkbox"]:checked');
         let checkedCheckboxes = [];
         amenity_dict.each(function() {
           checkedCheckboxes.push($(this).attr('data-name'));
         })
-        for (item in data) {
-          if (item in checkedCheckboxes) {
-            temp.push(item);
-          }
-        }
+        console.log(checkedCheckboxes);
+        temp['amenities'] = checkedCheckboxes;
         console.log("ajax call has run")
-        javascriptLoop(temp);
+        let prevRender = document.getElementsByClassName("places_article");
+        for (article of prevRender) {
+          article.remove();
+        }
+        javascriptLoop(data);
     })
   })
 
